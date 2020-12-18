@@ -1,0 +1,34 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js" integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA==" crossorigin="anonymous"></script>
+<script>
+
+    class Particle  {
+        constructor(){
+            this.position = createVector(20,20);
+            this.radius = 15
+            this.velocity = createVector(1,0)
+            this.accelaration = createVector(0,0)
+        }
+        render(){
+            const diameter = this.radius * 2;
+            ellipse(this.position.x,this.position.y,diameter); 
+        }
+        update(){
+            //this.accelaration = createVector((mouseX-this.position.x)*0.02,(mouseY-this.position.y)*0.02)
+            this.accelaration = createVector(mouseX,mouseY).sub(this.position).mult(0.01);
+            this.velocity.add(this.accelaration).limit(5)
+            this.position.add(this.velocity)
+        }
+    }
+    
+    
+    function setup(){
+        createCanvas(800,800)
+        particle = new Particle();
+    }
+
+    function draw(){
+        background('#cccccc');
+        particle.render();
+        particle.update();
+    }
+</script>

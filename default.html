@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processing</title>
+</head>
+<style>
+    html,body{
+        height: 100vh;
+        width: 100vw;
+    }
+    body{
+        background-color: #090a24;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        justify-content: center;
+    }    .props{
+      left: 0;
+      position: absolute;
+      padding:25px;
+      background-color: rgb(223, 79, 12);
+      margin-right:25px;
+      margin-left:15px;      
+      color: #ffffff;
+      border-radius: 12px;
+      min-width: 100px;
+      min-height: 100px;
+    }
+</style>
+<body>
+  <div class="props" id="props">
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+<script>
+
+function setup() {
+  const cnv = createCanvas(640,360);
+  cnv.style("border","10px solid #1d5e45")
+  cnv.style("border-radius","10px 10px 20px 20px")
+  cnv.style("border-top-width","40px")
+  background(233);
+}
+
+function draw() {
+  props.innerText=``;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processing</title>
+</head>
+<style>
+    html,body{
+        height: 100vh;
+        width: 100vw;
+    }
+    body{
+        background-color: #090a24;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        justify-content: center;
+    }
+    .props{
+      left: 0;
+      position: absolute;
+      padding:25px;
+      background-color: rgb(223, 79, 12);
+      margin-right:25px;
+      margin-left:15px;      
+      color: #ffffff;
+      border-radius: 12px;
+      min-width: 100px;
+      min-height: 100px;
+    }
+</style>
+<body>
+  <div class="props" id="props">
+
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+<script>
+let props = document.getElementById("props")
+let speed;
+let position;
+
+function setup() {
+  const cnv = createCanvas(640,360);
+  cnv.style("border","10px solid #1d5e45")
+  cnv.style("border-radius","10px 10px 20px 20px")
+  cnv.style("border-top-width","40px")
+  background(233);
+  position = createVector(100,100);
+  speed = createVector(5,5);
+}
+
+function draw() {
+ 
+  background(233);
+  position.add(speed)
+  
+  if ((position.x > width) || (position.x < 0)) {
+    speed.x = speed.x * -1;
+  }
+  if ((position.y > height) || (position.y < 0)) {
+    speed.y = speed.y * -1;
+  }
+  props.innerText=`
+      x : ${position.x} \n
+      y : ${position.y} \n
+      xSpeed : ${speed.x} \n
+      ySpeed : ${speed.y}`;
+
+  stroke(0);
+  fill("#276071");
+  // Display the ball at the position (x,y).
+  ellipse(position.x,position.y,20,20);
+}
+</script>
+
+</body>
+</html>
